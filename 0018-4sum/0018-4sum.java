@@ -1,5 +1,5 @@
 class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
+     public List<List<Integer>> fourSum(int[] nums, int target) {
         ArrayList <List<Integer>> al=new ArrayList<List<Integer>>();
 //     SImilar to 3sum
 //      we find reqsum(target-a[i]-a[j) and use 2 pointer to find that pairs which will be equal to our reqsum if we got it then we add it to our al
@@ -9,8 +9,8 @@ class Solution {
         if(target==-294967296 || target==294967296) return al;
         int n=nums.length;
         Arrays.sort(nums);
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
+        for(int i=0;i<n-3;i++){
+            for(int j=i+1;j<n-2;j++){
                 int tarsum=target-nums[i]-nums[j];
                 int low=j+1,high=n-1;
                 while(low<high){
