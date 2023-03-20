@@ -17,11 +17,21 @@ class Solution {
         
         
 // ..............  Method 2.............   
+ /*
        s= s.toLowerCase().replaceAll("[^a-z0-9]", "");
         StringBuilder sb=new StringBuilder();
         sb.append(s).reverse();
         return s.equals(sb.toString());
+*/
         
+        
+       s= s.toLowerCase().replaceAll("[^a-z0-9]", "");
+        for(int i=0;i<s.length()/2;i++){
+            if(s.charAt(i)!=s.charAt(s.length()-1-i)){
+                return false;
+            }
+        }
+        return true;
 
     }
 }
