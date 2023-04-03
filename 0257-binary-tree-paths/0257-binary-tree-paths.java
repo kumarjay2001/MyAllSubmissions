@@ -28,6 +28,7 @@ class Solution {
         ans+=root.val;
         if(root.left==null && root.right==null){
             al.add(ans);
+            return;
         }
         ans+="->";
         bins(root.left,ans);
