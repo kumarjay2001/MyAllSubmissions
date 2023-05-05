@@ -40,12 +40,11 @@ class Solution {
         ArrayList<Integer> al=new ArrayList<>();
         Queue<Integer> q=new LinkedList<>();
         boolean []vis=new boolean[V];
-        
         q.add(0);
-       
+        // vis[0]=true;
         while(!q.isEmpty()){
-            Integer curr=q.remove();
-            if(vis[curr]==false){
+            int curr=q.remove();
+            if(!vis[curr]){
                 vis[curr]=true;
                 al.add(curr);
                 for(Integer it:adj.get(curr)){
