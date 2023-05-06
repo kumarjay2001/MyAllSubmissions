@@ -1,5 +1,5 @@
 class Solution {
-    
+    /*
     public void dfs(int row,int col,char[][] grid,int [][] vis){
         vis[row][col]=1;
         int m=grid.length;
@@ -32,6 +32,32 @@ class Solution {
                 }
             }
         }
+        return cnt;
+    }
+    */
+    public void dfs(int i,int j,char [][]grid){
+        int m=grid.length;
+        int n=grid[0].length;
+        if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] != '1') return;
+        grid[i][j]='0';
+        dfs(i-1,j,grid);
+        dfs(i+1,j,grid);
+        dfs(i,j-1,grid);
+        dfs(i,j+1,grid);
+    }
+    public int numIslands(char[][] grid) {
+         int m=grid.length;
+        if ( m== 0) return 0;
+        int n=grid[0].length;
+        int cnt=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]=='1'){
+                    cnt++;
+                    dfs(i,j,grid); 
+                }
+            }
+        }  
         return cnt;
     }
 }
