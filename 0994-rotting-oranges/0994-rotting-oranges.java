@@ -41,6 +41,7 @@ class Solution {
                 int nc=c+si[i];
                 if(nr>=0 && nr<m && nc>=0 && nc<n &&vis[nr][nc]!=2 && grid[nr][nc]==1){
                     grid[nr][nc]=2;
+                    vis[nr][nc]=2;
                     cnte++;
                     q.add(new Pair(nr,nc,t+1));
                 }
