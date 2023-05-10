@@ -1,26 +1,38 @@
 class Solution {
     public int numEnclaves(int[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if ((i == 0 || j == 0 || i == m - 1 || j == n - 1) && grid[i][j] == 1) {
-                    dfs(grid, i, j);
+        int m=grid.length;
+        int n=grid[0].length;
+        int incnt=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1){
+                    incnt++;
                 }
             }
         }
-        return Arrays.stream(grid).mapToInt(row -> Arrays.stream(row).sum()).sum();
-    }
-    
-    private void dfs(int[][] grid, int i, int j) {
-        grid[i][j] = 0;
-        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        for (int[] direction : directions) {
-            int x = i + direction[0];
-            int y = j + direction[1];
-            if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] == 1) {
-                dfs(grid, x, y);
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1 && (i==0||j==0||i==m-1 || j==n-1)){
+                    dfs(i,j,grid);
+                }
             }
         }
+        return incnt-cnt;
+        
+    }
+    int cnt=0;
+    public void dfs(int i,int j,int [][]grid){
+        int m=grid.length;
+        int n=grid[0].length;
+        if(i<0||i>=m||j<0||j>=n||grid[i][j]!=1){
+            return;
+        }
+        cnt++;
+        grid[i][j]=0;
+        dfs(i-1,j,grid);
+        dfs(i+1,j,grid);
+        dfs(i,j-1,grid);
+        dfs(i,j+1,grid);
+        
     }
 }
