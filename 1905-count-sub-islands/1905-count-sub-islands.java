@@ -1,7 +1,9 @@
 class Solution {
    int ans =0;
 public void dfs(int[][] grid1, int[][] grid2, int i , int j){
-    if(i<0|| i>=grid1.length ||j<0|| j>=grid1[0].length || grid2[i][j]==0 ) return;
+    if(i<0|| i>=grid1.length ||j<0|| j>=grid1[0].length || grid2[i][j]==0 ) {
+        return;
+    }
     if(grid1[i][j]== 0)ans =0;
     grid2[i][j] =0;
     dfs(grid1, grid2, i-1, j);
