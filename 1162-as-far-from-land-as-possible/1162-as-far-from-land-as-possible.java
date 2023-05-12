@@ -8,9 +8,9 @@ class Solution {
         }
     }
     public int maxDistance(int[][] grid) {
-        Queue<Pair> q=new LinkedList<>();
         int m=grid.length;
         int n=grid[0].length;
+        Queue<Pair> q=new LinkedList<>();
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(grid[i][j]==1){
@@ -18,12 +18,12 @@ class Solution {
                 }
             }
         }
-        int []fis={-1,0,1,0};
-        int []ris={0,1,0,-1};
-        if(q.size()==0 || q.size()==grid[0].length*grid.length){
+        int []frow={-1,0,1,0};
+        int []fcol={0,1,0,-1};
+        int lvl=-1;
+         if(q.size()==0 || q.size()==grid[0].length*grid.length){
             return -1;
         }
-        int lvl=-1;
         while(!q.isEmpty()){
             lvl++;
             int ni=q.size();
@@ -32,9 +32,9 @@ class Solution {
                 int c=q.peek().c;
                 q.remove();
                 for(int i=0;i<4;i++){
-                    int nr=r+fis[i];
-                    int nc=c+ris[i];
-                    if(nr<0 || nc<0 || nr>=grid.length || nc>=grid[0].length || grid[nr][nc]==1){
+                    int nr=r+frow[i];
+                    int nc=c+fcol[i];
+                   if(nr<0 || nc<0 || nr>=grid.length || nc>=grid[0].length || grid[nr][nc]==1){
                         continue;
                     }
                     q.add(new Pair(nr,nc));
