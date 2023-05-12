@@ -24,6 +24,7 @@ class Solution {
         }
         if(grid1[i][j]==0){
             ans=false;
+            return;
         }
         grid2[i][j]=0;
         dfs(i-1,j,grid1,grid2);
