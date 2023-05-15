@@ -23,14 +23,14 @@ class Solution {
     //     }
     //     return res-1;
     // }
-    // public void dfs(int i,List<List<Integer>> al,int []vis){
-    //     vis[i]=1;
-    //     for(Integer j:al.get(i)){
-    //         if(vis[j]==0){
-    //             dfs(j,al,vis);
-    //         }
-    //     }
-    // }
+    public void dfs(int i,List<List<Integer>> al,int []vis){
+        vis[i]=1;
+        for(Integer j:al.get(i)){
+            if(vis[j]==0){
+                dfs(j,al,vis);
+            }
+        }
+    }
     public int makeConnected(int n, int[][] c) {
         if(c.length<n-1) return -1;
         List<List<Integer>> ans = new ArrayList<>();
@@ -47,9 +47,9 @@ class Solution {
             }
         return res-1;
     }
-    void dfs(int node,List<List<Integer>> ans,int vis[] ){
-        vis[node]=1;
-        for(int k:ans.get(node))
-            if(vis[k]==0) dfs(k,ans,vis);
-    }
+    // void dfs(int node,List<List<Integer>> ans,int vis[] ){
+    //     vis[node]=1;
+    //     for(int k:ans.get(node))
+    //         if(vis[k]==0) dfs(k,ans,vis);
+    // }
 }
