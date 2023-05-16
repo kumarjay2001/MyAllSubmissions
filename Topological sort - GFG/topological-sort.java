@@ -60,31 +60,64 @@ class Main {
 
 class Solution
 {
-    //Function to return list containing vertices in Topological order. 
-    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
-    {
-        // add your code here
-        int []vis=new int[V];
-        Stack<Integer> s=new Stack<>();
+    // static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    // {
+    //     // add your code here
+    //     int []vis=new int[V];
+    //     Stack<Integer> s=new Stack<>();
+    //     for(int i=0;i<V;i++){
+    //         if(vis[i]==0){
+    //             huehue(s,i,vis,adj);
+    //         }
+    //     }
+    //     int i=0;
+    //     while(!s.isEmpty()){
+    //         vis[i]=s.pop();
+    //         i++;
+    //     }
+    //     return vis;
+    // }
+    // static void huehue( Stack<Integer> s,int i,int []vis,ArrayList<ArrayList<Integer>> adj){
+    //     vis[i]=1;
+    //     for(int it:adj.get(i)){
+    //         if(vis[it]==0){
+    //             huehue(s,it,vis,adj);
+    //         }
+    //     }
+    //     s.push(i);
+    // }
+    
+    
+    
+    
+    
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
+        int []indeg=new int[V];
+        int[] top=new int[V];
         for(int i=0;i<V;i++){
-            if(vis[i]==0){
-                huehue(s,i,vis,adj);
+            for(Integer it:adj.get(i)){
+                indeg[it]++;
             }
         }
-        int i=0;
-        while(!s.isEmpty()){
-            vis[i]=s.pop();
-            i++;
-        }
-        return vis;
-    }
-    static void huehue( Stack<Integer> s,int i,int []vis,ArrayList<ArrayList<Integer>> adj){
-        vis[i]=1;
-        for(int it:adj.get(i)){
-            if(vis[it]==0){
-                huehue(s,it,vis,adj);
+        Queue<Integer> q=new LinkedList<>();
+        for(int i=0;i<V;i++){
+            if(indeg[i]==0){
+                q.add(i);
             }
         }
-        s.push(i);
+        int r=0;
+        while(!q.isEmpty()){
+            int node=q.remove();
+            top[r++]=node;
+            for(Integer itr : adj.get(node)){
+                indeg[itr]--;
+                if(indeg[itr]==0){
+                    q.add(itr);
+                }
+            }
+        }
+        
+        return top;
+        
     }
 }
