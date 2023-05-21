@@ -74,11 +74,13 @@ class Solution
          int []dist=new int[V];
          Arrays.fill(dist,Integer.MAX_VALUE);
          dist[S]=0;
+         boolean []vis=new boolean[V];
          pq.add(new Pair(S,0));
          while(!pq.isEmpty()){
              int node=pq.peek().dest;
              int dis= pq.peek().dis;
              pq.remove();
+             
              for(int it=0;it<adj.get(node).size();it++){
                  int adjnode=adj.get(node).get(it).get(0);
                  int adjdis=adj.get(node).get(it).get(1);
@@ -87,6 +89,7 @@ class Solution
                      pq.add(new Pair(adjnode,dist[adjnode]));
                  }
              }
+             
          }
          return dist;
     }
