@@ -43,6 +43,7 @@ class Solution {
                 }
             }
         }
-        return 0;
+        // return 0;
+       return dest[m-1][n-1];
     }
 }
