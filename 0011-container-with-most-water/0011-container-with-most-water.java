@@ -1,17 +1,19 @@
 class Solution {
     public int maxArea(int[] height) {
-        // using the approach which is used in trapping rainwater (waterlevel)*width and water level is min of heights
-        int i=0,j=height.length-1,area=0;
+        int maxwater=0;
+        int i=0,j=height.length-1;
         while(i<j){
-            int w=j-i;
-            int h=Math.min(height[i],height[j]);
-            area=Math.max(area,w*h);
-            if(height[i]<height[j]){
-                i++;
-            }else{
+            int area=Math.min(height[i],height[j]);
+            area*=(j-i);
+            if(area>maxwater){
+                maxwater=area;
+            }
+            if(height[i]>height[j]){
                 j--;
+            }else{
+                i++;
             }
         }
-        return area;
+        return maxwater;
     }
 }
